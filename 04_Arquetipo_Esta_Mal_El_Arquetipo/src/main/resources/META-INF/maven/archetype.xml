@@ -1,0 +1,12 @@
+<archetype>
+	<id>04_Arquetipo</id>
+	<sources>
+		<source>src/main/java/App.java</source>
+	</sources>
+	<testSources>
+		<source>src/test/java/AppTest.java</source>
+	</testSources>
+	<requiredProperty key="value">
+		<defaultValue>defecto</defaultValue>
+	</requiredProperty>
+</archetype>
