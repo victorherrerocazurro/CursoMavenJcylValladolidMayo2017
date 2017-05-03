@@ -1,0 +1,17 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+1-Crear un proyecto Maven, con los siguientes requisitos
+
+* Version de java 7
+* Dependencias con
+	JUnit (test)
+	commons-logging
+	log4j
+* Clase con un metodo que imprima en el log con commons-logging
+* Configuracion de commons-logging y log4j
+* Test que pruebe la clase.
+
+2-Generar un Arquetipo del proyecto
+
+3-Crear un nuevo proyecto que sera exactamente igual al primero, basandose en el arquetipo 
