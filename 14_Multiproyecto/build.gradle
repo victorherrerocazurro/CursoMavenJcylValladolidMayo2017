@@ -1,0 +1,62 @@
+allprojects {
+	//Si qaueremos configurar todos, padre e hijos
+}
+
+task HolaMundo {
+	doLast {
+	
+	}
+}
+
+class GreetingPlugin implements Plugin<Project> {
+	void apply(Project project) {
+		project.task('hello') {
+			doLast {
+				println "Hello from the GreetingPlugin"
+			}
+		}
+	}
+}
+
+subprojects {
+	//Si queremos solo configurar a los hijos
+    apply plugin: 'java'
+    apply plugin: 'eclipse'
+	apply plugin: 'maven-publish'
+	apply plugin: GreetingPlugin
+
+	publishing {
+		publications {
+			maven(MavenPublication) {
+				groupId 'com.ejemplo.gradle'
+				artifactId project.name
+				version project.version
+				from components.java
+			}
+		}
+	}
+
+
+    repositories {
+       mavenCentral()
+       maven {
+       	url System.getProperty("user.home") + "/.m2/repository"
+       }
+    }
+
+    dependencies {
+        testCompile 'junit:junit:4.8.2'
+    }
+
+	//displayName = '14_Multiproyecto'
+    version = '0.0.1-SNAPSHOT'
+
+    jar {
+        manifest.attributes provider: 'my cool company'
+    }
+    
+    task copyDocs(type: Copy) {
+	    from 'src/main/doc'
+	    into 'build/target/doc'
+	}
+}

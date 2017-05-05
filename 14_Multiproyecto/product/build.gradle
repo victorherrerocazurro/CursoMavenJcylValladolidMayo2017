@@ -1,0 +1,7 @@
+apply plugin : 'war'
+apply plugin : 'jetty'
+
+dependencies {
+	//compile project(':my-lib')
+	compile group: 'com.ejemplo.gradle', name: 'my-lib', version: '0.0.1-SNAPSHOT'
+}

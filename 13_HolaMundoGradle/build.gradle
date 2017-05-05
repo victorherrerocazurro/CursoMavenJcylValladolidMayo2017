@@ -1,0 +1,44 @@
+apply plugin : 'java'
+apply plugin : 'eclipse'
+
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	// https://mvnrepository.com/artifact/junit/junit
+	testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+task HolaMundo {
+
+	ext {
+		descripcion = 'Esta tarea sirve para saludar'
+		nombre = 'Hola Mundo'
+	}
+
+	doFirst {
+		println('Preparandome para saludar con ' + nombre)
+	}
+	
+	doLast {
+		//Codigo Groovy
+		println('Hola Mundo')
+	}
+}
+
+task AdiosMundo (dependsOn : HolaMundo) {
+	doLast {
+		//Codigo Groovy
+		println('Adios Mundo')
+	}
+}
+
+AdiosMundo.doFirst {
+	println('Preparando la despedida de ' + HolaMundo.nombre)
+}
+
+AdiosMundo.doLast {
+	println('Que te pires')
+}
